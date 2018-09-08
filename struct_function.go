@@ -12,6 +12,7 @@ type car struct {
 	topSpeedKm    float64
 }
 
+// Value receivers
 func (c car) kmh() float64 {
 	return float64(c.gasPedal) * float64(c.topSpeedKm)
 }
