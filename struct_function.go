@@ -17,6 +17,11 @@ func (c car) kmh() float64 {
 	return float64(c.gasPedal) * float64(c.topSpeedKm)
 }
 
+// Pointers receivers (Modifica el valor del struct)
+func (c *car) newTopSpeed(newSpeed float64) {
+	c.topSpeedKm = newSpeed
+}
+
 func main() {
 	fmt.Println("GO is working!")
 
@@ -32,4 +37,7 @@ func main() {
 	fmt.Println(aCar.topSpeedKm)
 	fmt.Println("Function")
 	fmt.Println(aCar.kmh())
+	aCar.newTopSpeed(500)
+	fmt.Println("New Value")
+	fmt.Println(aCar.topSpeedKm)
 }
