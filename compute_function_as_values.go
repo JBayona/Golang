@@ -1,28 +1,20 @@
-// https://tour.golang.org/moretypes/23
-
 package main
 
 import (
-	"strings"
-
-	"golang.org/x/tour/wc"
+	"fmt"
+	"math"
 )
 
-func WordCount(s string) map[string]int {
-	arr := strings.Split(s, " ")
-	result := make(map[string]int)
-
-	for _, v := range arr {
-		_, ok := result[v]
-		if ok {
-			result[v]++
-		} else {
-			result[v] = 1
-		}
-	}
-	return result
+func compute(fn func(float64, float64) float64) float64 {
+	return fn(3, 4)
 }
 
 func main() {
-	wc.Test(WordCount)
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(hypot(5, 12))
+
+	fmt.Println(compute(hypot))
+	fmt.Println(compute(math.Pow))
 }
